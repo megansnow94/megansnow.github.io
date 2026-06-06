@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Megan Snow | Data Analyst Portfolio</title>
+    <style>
+        /* Modern System Font Stack & Variables */
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --accent: #2563eb; /* Clean Tech Blue */
+            --accent-light: #eff6ff;
+            --border: #e2e8f0;
+            --radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Header / Hero Section */
+        header {
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Tech Stack Badges */
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .badge {
+            background-color: var(--accent-light);
+            color: var(--accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .badge.ai-badge {
+            background-color: #f0fdf4;
+            color: #16a34a; /* Special green accent for AI credentials */
+        }
+
+        /* Social / Contact Links */
+        .links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-right: 1.25rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .links a:hover {
+            color: var(--accent);
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Project Cards */
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.75rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .project-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: var(--bg-color);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .project-description {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        /* STAR Grid details */
+        .star-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            font-size: 0.9rem;
+            background-color: var(--bg-color);
+            padding: 1rem;
+            border-radius: var(--radius);
+            margin-bottom: 1.25rem;
+        }
+
+        @media (max-width: 600px) {
+            .star-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .star-item strong {
+            color: var(--text-main);
+            display: block;
+            margin-bottom: 0.15rem;
+        }
+
+        .project-links a {
+            display: inline-block;
+            background-color: var(--text-main);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 0.5rem;
+            transition: background-color 0.2s;
+        }
+
+        .project-links a:hover {
+            background-color: var(--accent);
+        }
+
+        .project-links a.secondary {
+            background-color: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+        }
+
+        .project-links a.secondary:hover {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+        }
+
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- HEADER SECTION -->
+        <header>
+            <h1>Megan Snow</h1>
+            <p class="subtitle">Computer Science Graduate & Data Analyst specializing in operational reporting, manufacturing logistics data, and AI-assisted analytics workflows.</p>
+            
+            <div class="badge-container">
+                <span class="badge">SQL (MySQL)</span>
+                <span class="badge">Excel</span>
+                <span class="badge">Tableau</span>
+                <span class="badge">Python</span>
+                <span class="badge">Oracle & WMS</span>
+                <span class="badge">Data Cleaning</span>
+                <span class="badge">Data Visualization</span>
+                <span class="badge ai-badge">Generative AI</span>
+                <span class="badge ai-badge">Workflow Automation</span>
+            </div>
+
+            <div class="links">
+                <a href="mailto:m1994snow@outlook.com">m1994snow@outlook.com</a>
+                <a href="https://linkedin.com/in/megan-snow-553851329" target="_blank">LinkedIn</a>
+                <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank">GitHub</a>
+            </div>
+        </header>
+
+        <!-- FEATURED PROJECTS SECTION -->
+        <section id="projects">
+            <h2>Analytics Case Studies & Projects</h2>
+
+            <!-- PROJECT 1: INVENTORY REPORTING ANALYSIS -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">Manufacturing Inventory Reconciliation & Trend Analysis</div>
+                    <span class="project-meta">Oracle, WMS & Excel</span>
+                </div>
+                <p class="project-description">An operational analysis tracking material lifecycles and identifying recurring tracking variance patterns in a high-volume manufacturing facility.</p>
+                
+                <div class="star-grid">
+                    <div class="star-item"><strong>Situation:</strong> Inventory discrepancies across warehouse and production operations could bottleneck daily manufacturing output.</div>
+                    <div class="star-item"><strong>Task:</strong> Monitor, reconcile, and resolve materials data discrepancies to maintain operational flow and accurate reporting.</div>
+                    <div class="star-item"><strong>Action:</strong> Leveraged Oracle and WMS tracking systems combined with advanced Excel filtering to parse material logs, pinpointing processing leakages.</div>
+                    <div class="star-item"><strong>Result:</strong> Maintained cross-functional inventory alignment, directly enabling timely material availability and process efficiencies.</div>
+                </div>
+
+                <div class="project-links">
+                    <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank">View Project Repo</a>
+                </div>
+            </div>
+
+            <!-- PROJECT 2: WEB SCRAPER / CAPSTONE OR PERSONAL PROJECT -->
+            <!-- Note: You can replace this placeholder with your actual CS Capstone or a SQL project when ready! -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">AI-Assisted Operational Performance Modeling</div>
+                    <span class="project-meta">Python & Generative AI</span>
+                </div>
+                <p class="project-description">A Python data analysis workflow leveraging Generative AI engineering methods to streamline code structuring and generate diagnostic business insights.</p>
+                
+                <div class="star-grid">
+                    <div class="star-item"><strong>Situation:</strong> Processing large, disparate operations datasets manually leads to slow turnaround times on key performance reports.</div>
+                    <div class="star-item"><strong>Task:</strong> Build a clean, reproducible analytical script to process and extract insights from relational database tables.</div>
+                    <div class="star-item"><strong>Action:</strong> Wrote Python data processing scripts utilizing advanced prompt engineering for rapid prototyping, debugging, and data optimization loops.</div>
+                    <div class="star-item"><strong>Result:</strong> Established a workflow framework that translates raw programmatic output directly into automated, stakeholder-ready summaries.</div>
+                </div>
+
+                <div class="project-links">
+                    <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank">View Code Notebook</a>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- EDUCATION & CERTIFICATIONS SECTION -->
+        <section id="education">
+            <h2>Education & Professional Development</h2>
+            <div style="margin-bottom: 1.5rem;">
+                <h3 style="font-size: 1.1rem; font-weight: 700;">Bachelor of Science in Computer Science</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">University of Phoenix • Graduated April 2026</p>
+            </div>
+            <div>
+                <h3 style="font-size: 1.1rem; font-weight: 700;">Google AI Professional Certificate</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Google / Coursera • Issued June 2026</p>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.25rem;">7-course deep-dive into practical workplace applications: workflow automation, data analysis prompts, and ethical AI development.</p>
+            </div>
+        </section>
+
+        <!-- ABOUT ME SECTION -->
+        <section id="about">
+            <h2>Professional Summary</h2>
+            <p style="color: var(--text-muted);">
+                I am a recent Computer Science graduate with real-world experience utilizing data systems like Oracle and warehouse management suites within fast-paced production environments. Combining traditional technical logic with modern AI-driven analytics, I bridge the gap between heavy technical structures and operational realities to find hidden data insights.
+            </p>
+        </section>
+
+        <footer>
+            &copy; 2026 Megan Snow. Built with HTML & CSS. Hosted via GitHub Pages.
+        </footer>
+
+    </div>
+
+</body>
+</html>
