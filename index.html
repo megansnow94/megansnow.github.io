@@ -5,22 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Megan Snow | Data Analyst Portfolio</title>
     <style>
-        /* Bright, Colorful, Ultra-Techy Light Mode Variables */
+        /* Immersive Premium Tech Palette */
         :root {
-            --bg-color: #fbfbfd;        /* Ultra-bright clean apple white */
-            --card-bg: #ffffff;         /* Stark white card */
-            --text-main: #090d16;       /* Deep tech navy/black */
-            --text-muted: #576574;      /* Slate gray for body reading text */
+            --bg-main: #060814;          /* Ultra-deep space black */
+            --card-bg: #0f1225;          /* Sleek cyberpunk glass card */
+            --text-main: #ffffff;        /* High-contrast pure white */
+            --text-muted: #8b949e;       /* Elegant muted slate gray */
             
             /* High-Energy Electric Accents */
-            --neon-blue: #00d2ff;       /* Cyan Glow */
-            --neon-purple: #9b51e0;     /* Electric Purple */
-            --accent-gradient: linear-gradient(135deg, #00d2ff, #7928ca, #ff007a);
-            --ai-accent: #00f2fe;       /* Neon Teal for AI credentials */
+            --neon-blue: #00f2fe;        /* Cyan Glow */
+            --neon-pink: #ff007a;        /* Hot Pink */
+            --neon-purple: #7928ca;      /* Deep Violet */
+            --accent-gradient: linear-gradient(135deg, #00f2fe, #7928ca, #ff007a);
             
-            --border: #e2e8f0;          /* Crisp clean structural dividers */
-            --radius: 6px;              /* Sharper edges for that advanced tech layout look */
-            --shadow: 0 10px 30px rgba(121, 40, 202, 0.05); /* Soft electric purple tint shadow */
+            --border: rgba(255, 255, 255, 0.08);
+            --radius: 12px;
         }
 
         * {
@@ -30,304 +29,364 @@
         }
 
         body {
-            /* Monospaced system font stack for an engineering/data terminal vibe */
-            font-family: "SF Mono", SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
-            background-color: var(--bg-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-main);
             color: var(--text-main);
             line-height: 1.6;
-            padding: 4rem 1.5rem;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 850px;
-            margin: 0 auto;
+        .hero-section {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 60px;
+            padding: 2rem 4rem;
+            align-items: center;
+            position: relative;
         }
 
-        /* Hero / Header with Colorful Gradient Text */
-        header {
-            margin-bottom: 4rem;
-            border-left: 4px solid var(--neon-purple);
-            padding-left: 1.5rem;
+        /* Left Content Column */
+        .hero-content {
+            padding-right: 2rem;
+            z-index: 10;
+        }
+
+        .logo {
+            font-family: "SF Mono", monospace;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            font-size: 1.1rem;
+            position: absolute;
+            top: 3rem;
+            left: 4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            background: var(--accent-gradient);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            color: #000;
+            font-weight: 900;
+        }
+
+        .contact-btn {
+            position: absolute;
+            top: 2.5rem;
+            right: 8rem;
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: var(--neon-blue);
+            color: #000;
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.4);
         }
 
         h1 {
-            font-size: 3rem;
-            font-weight: 900;
-            letter-spacing: -0.04em;
-            background: var(--accent-gradient);
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.05em;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #ffffff, #e2e8f0, var(--neon-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
         }
 
-        .subtitle {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            font-size: 1.25rem;
+        .hero-description {
             color: var(--text-muted);
-            margin-bottom: 2rem;
-            max-width: 700px;
-            font-weight: 500;
+            font-size: 1.2rem;
+            max-width: 520px;
+            margin-bottom: 2.5rem;
         }
 
-        /* Colorful High-Tech Capsule Badges */
-        .badge-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .badge {
-            background-color: #ffffff;
-            color: #7928ca;
-            border: 1px solid #7928ca;
-            padding: 0.3rem 0.8rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            box-shadow: 2px 2px 0px #7928ca; /* Retro/Tech pop shadow */
-        }
-
-        .badge.ai-badge {
-            color: #00a8ff;
-            border: 1px solid #00a8ff;
-            box-shadow: 2px 2px 0px #00a8ff;
-        }
-
-        /* Tech-style Links with Hover Transitions */
-        .links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-        }
-
-        .links a {
-            color: var(--text-main);
+        .tech-link {
+            color: var(--neon-pink);
             text-decoration: none;
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s;
+        }
+
+        .tech-link:hover {
+            color: var(--neon-blue);
+        }
+
+        /* Right Column: Isometric / Multi-layered Tech Mockup Workspace */
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            height: 80%;
+        }
+
+        /* Abstract CSS Data Workspace Window Mockup */
+        .mockup-window {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            width: 100%;
+            max-width: 420px;
+            height: 320px;
+            padding: 1.25rem;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+            position: relative;
+            transform: perspective(1000px) rotateY(-15deg) rotateX(10deg);
+            z-index: 2;
+        }
+
+        .mockup-header {
+            display: flex;
+            gap: 0.4rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .dot {
+            width: 100px; height: 12px; border-radius: 5px; background: rgba(255,255,255,0.05);
+        }
+        .dot:first-child { width: 12px; background: var(--neon-pink); }
+        .dot:nth-child(2) { width: 12px; background: var(--neon-blue); }
+
+        /* Floating Colorful Data Visual Element behind mockup */
+        .floating-glow-disk {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, var(--neon-purple), var(--neon-pink));
+            border-radius: 50%;
+            z-index: 1;
+            right: 10%;
+            top: 20%;
+            filter: blur(20px);
+            opacity: 0.6;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(180deg); }
+        }
+
+        /* Technical Interactive Bar Chart simulation inside window */
+        .chart-simulation {
+            display: flex;
+            align-items: flex-end;
+            gap: 0.75rem;
+            height: 180px;
+            padding-top: 2rem;
+        }
+
+        .bar {
+            width: 100%;
+            background: linear-gradient(to top, var(--neon-purple), var(--neon-blue));
+            border-radius: 4px 4px 0 0;
+            animation: growUp 1.5s ease-out forwards;
+            transform-origin: bottom;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+        }
+
+        @keyframes growUp { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+
+        .right-timeline {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            font-family: "SF Mono", monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            border-left: 1px solid var(--border);
+            height: 60%;
+        }
+
+        .nav-num {
+            cursor: pointer;
+            transition: color 0.2s;
+            padding: 0.25rem 0;
+        }
+
+        .nav-num.active {
+            color: var(--neon-blue);
+            font-weight: 700;
+            border-right: 2px solid var(--neon-blue);
+            padding-right: 5px;
+        }
+
+        /* Scroll indicator on the bottom right edge */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            right: 3.5rem;
+            transform: rotate(-90deg);
+            transform-origin: right bottom;
+            font-family: "SF Mono", monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            border-bottom: 2px solid var(--neon-blue);
-            padding-bottom: 2px;
-            transition: all 0.2s ease;
+            color: var(--text-muted);
         }
 
-        .links a:hover {
-            color: var(--neon-purple);
-            border-bottom-color: var(--neon-purple);
-            background-color: rgba(155, 81, 224, 0.05);
+        /* Main Project Container content underneath */
+        .main-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
         }
 
-        /* Content Structure */
-        section {
-            margin-bottom: 5rem;
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
         }
 
-        h2 {
-            font-size: 1.4rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
-            border-bottom: 2px dashed var(--border);
-            padding-bottom: 0.75rem;
-            margin-bottom: 2rem;
-            color: var(--text-main);
-        }
-
-        /* Clean Project Cards with Vibrant Accent Left Borders */
         .project-card {
             background: var(--card-bg);
             border: 1px solid var(--border);
-            border-left: 5px solid var(--neon-blue); /* Colorful structural anchor */
             border-radius: var(--radius);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        /* Alternate left border colors dynamically for maximum bright variety */
-        .project-card:nth-child(even) {
-            border-left-color: var(--neon-purple);
+            padding: 2.5rem;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
 
         .project-card:hover {
-            transform: scale(1.01);
-            box-shadow: 0 15px 35px rgba(0, 210, 255, 0.12);
-        }
-
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            gap: 1rem;
+            transform: translateY(-5px);
+            border-color: var(--neon-blue);
+            box-shadow: 0 30px 60px rgba(0, 242, 254, 0.1);
         }
 
         .project-title {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--text-main);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
         }
 
-        .project-meta {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #ffffff;
-            background: linear-gradient(135deg, #7928ca, #ff007a);
+        .badge-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-badge {
+            font-family: "SF Mono", monospace;
+            font-size: 0.7rem;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border);
             padding: 0.25rem 0.6rem;
             border-radius: 4px;
-            text-transform: uppercase;
+            color: var(--neon-blue);
         }
 
-        .project-description {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        .star-item {
+            font-size: 0.9rem;
             color: var(--text-muted);
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        /* The Structured STAR Insight Layout (Data Center Vibe) */
-        .star-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.25rem;
-            font-size: 0.85rem;
-            background-color: #f8fafc;
-            padding: 1.25rem;
-            border-radius: var(--radius);
-            margin-bottom: 1.5rem;
-            border-left: 2px solid var(--border);
-        }
-
-        @media (max-width: 650px) {
-            .star-grid {
-                grid-template-columns: 1fr;
-            }
-            h1 { font-size: 2.2rem; }
+            margin-bottom: 0.75rem;
         }
 
         .star-item strong {
-            color: var(--neon-purple);
-            display: block;
-            margin-bottom: 0.25rem;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        /* Futuristic Tech Buttons */
-        .project-links a {
-            display: inline-block;
-            background: var(--text-main);
             color: #ffffff;
-            padding: 0.6rem 1.25rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-right: 0.75rem;
-            transition: all 0.2s ease;
         }
 
-        .project-links a:hover {
-            background: var(--accent-gradient);
-            box-shadow: 0 5px 15px rgba(121, 40, 202, 0.3);
-        }
-
-        /* Education Blocks */
-        .edu-block {
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-        }
-        .edu-title {
-            font-size: 1.15rem;
-            font-weight: 800;
-            color: var(--text-main);
-        }
-        .edu-meta {
-            color: var(--neon-purple);
-            font-size: 0.8rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        footer {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.75rem;
-            margin-top: 6rem;
-            border-top: 2px dashed var(--border);
-            padding-top: 2rem;
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+                padding: 6rem 2rem;
+                min-height: auto;
+            }
+            .hero-visual { display: none; }
+            .right-timeline { display: none; }
+            .grid-layout { grid-template-columns: 1fr; }
+            h1 { font-size: 2.8rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <!-- HERO SPLIT DISPLAY -->
+    <section class="hero-section">
+        <div class="logo"><span>&gt;</span> MS_ANALYTICS</div>
         
-        <!-- HEADER / HERO -->
-        <header>
-            <h1>Megan Snow</h1>
-            <p class="subtitle">Computer Science Graduate & Data Analyst specializing in operational reporting, manufacturing logistics data, and AI-assisted analytics workflows.</p>
-            
-            <div class="badge-container">
-                <span class="badge">SQL (MySQL)</span>
-                <span class="badge">Excel</span>
-                <span class="badge">Tableau</span>
-                <span class="badge">Python</span>
-                <span class="badge">Oracle & WMS</span>
-                <span class="badge">Data Cleaning</span>
-                <span class="badge">Data Visualization</span>
-                <span class="badge ai-badge">Generative AI</span>
-                <span class="badge ai-badge">Workflow Automation</span>
+        <a href="mailto:m1994snow@outlook.com" class="contact-btn">Contact</a>
+
+        <div class="hero-content">
+            <h1>Data Analyst & Operations Specialist</h1>
+            <p class="hero-description">Transforming dark operational and logistics data inside fast-paced industrial environments into structured, high-visibility business dashboards.[cite: 1]</p>
+            <a href="#projects" class="tech-link">Explore Case Studies <span>&rarr;</span></a>
+        </div>
+
+        <!-- Dynamic Isometric Code / Visualization Display -->
+        <div class="hero-visual">
+            <div class="floating-glow-disk"></div>
+            <div class="mockup-window">
+                <div class="mockup-header">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <div style="font-family: 'SF Mono', monospace; font-size: 0.75rem; color: var(--neon-blue);">
+                    SELECT variance, material_id FROM inventory_logs;
+                </div>
+                <div class="chart-simulation">
+                    <div class="bar" style="height: 40%;"></div>
+                    <div class="bar" style="height: 85%; animation-delay: 0.1s;"></div>
+                    <div class="bar" style="height: 60%; animation-delay: 0.2s;"></div>
+                    <div class="bar" style="height: 95%; animation-delay: 0.3s;"></div>
+                    <div class="bar" style="height: 30%; animation-delay: 0.4s;"></div>
+                </div>
             </div>
+        </div>
 
-            <div class="links">
-                <a href="mailto:m1994snow@outlook.com">m1994snow@outlook.com</a>
-                <a href="https://linkedin.com/in/megan-snow-553851329" target="_blank">LinkedIn</a>
-                <a href="https://github.com/megansnow94" target="_blank">GitHub</a>
+        <!-- Right Vertical Indicator Stack -->
+        <div class="right-timeline">
+            <div class="nav-num active">00</div>
+            <div class="nav-num">01</div>
+            <div class="nav-num">02</div>
+            <div class="nav-num">03</div>
+        </div>
+
+        <div class="scroll-indicator">&lt; scroll down</div>
+    </section>
+
+    <!-- CONTENT MODULES -->
+    <div class="main-content" id="projects">
+        <h2 style="font-size: 2rem; font-weight: 800; letter-spacing: -0.04em; margin-bottom: 1rem;">Selected Projects</h2>
+        <p style="color: var(--text-muted); margin-bottom: 3rem; font-size: 1.1rem;">Practical optimization use cases mapping data infrastructure to supply chain impact.[cite: 1]</p>
+
+        
+        <!-- ACADEMIC CREDENTIALS -->
+        <h2 style="font-size: 2rem; font-weight: 800; letter-spacing: -0.04em; margin-top: 6rem; margin-bottom: 2rem;">Qualifications</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 2rem; border-radius: var(--radius);">
+                <div style="color: var(--neon-pink); font-family: 'SF Mono', monospace; font-size: 0.8rem; margin-bottom: 0.5rem; font-weight: 700;">BS // COMPUTER SCIENCE</div>
+                <div style="font-size: 1.2rem; font-weight: 700;">University of Phoenix</div>
+                <div style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.25rem;">Graduated April 2026</div>
             </div>
-        </header>
-
-        <!-- ANALYTICS PROJECTS -->
-        <section id="projects">
-            <h2>// Analytics Case Studies</h2>
-
-
-        <!-- EDUCATION & CREDENTIALS -->
-        <section id="education">
-            <h2>// Education & Credentials</h2>
-            
-            <div class="edu-block">
-                <div class="edu-title">Bachelor of Science in Computer Science</div>
-                <div class="edu-meta">University of Phoenix • Graduated April 2026</div>
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 2rem; border-radius: var(--radius);">
+                <div style="color: var(--neon-blue); font-family: 'SF Mono', monospace; font-size: 0.8rem; margin-bottom: 0.5rem; font-weight: 700;">PROFESSIONAL CERTIFICATE</div>
+                <div style="font-size: 1.2rem; font-weight: 700;">Google AI Credentials</div>
+                <div style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.25rem;">Issued June 2026 // Applied Workplace Automation Certificate[cite: 1]</div>
             </div>
-            
-            <div class="edu-block">
-                <div class="edu-title">Google AI Professional Certificate</div>
-                <div class="edu-meta">Google / Coursera • Issued June 2026</div>
-                <p style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--text-muted); font-size: 0.95rem; margin-top: 0.25rem;">7-course deep-dive into practical workplace applications: workflow automation, data analysis prompts, and ethical AI development.</p>
-            </div>
-        </section>
-
-        <!-- SUMMARY -->
-        <section id="about">
-            <h2>// Execution Summary</h2>
-            <p style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--text-muted); font-size: 1.05rem;">
-                I am a recent Computer Science graduate with real-world experience utilizing data systems like Oracle and warehouse management suites within fast-paced production environments[cite: 1]. Combining traditional technical logic with modern AI-driven analytics, I bridge the gap between heavy technical structures and operational realities to find hidden data insights[cite: 1].
-            </p>
-        </section>
-
-        <footer>
-            SYS.STATUS: ACTIVE // &copy; 2026 Megan Snow. Hosted via GitHub Pages.
-        </footer>
-
+        </div>
     </div>
 
 </body>
