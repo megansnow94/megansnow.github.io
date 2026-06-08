@@ -36,6 +36,7 @@
             overflow-x: hidden;
         }
 
+        /* Hero Wrapper */
         .hero-section {
             min-height: 100vh;
             display: grid;
@@ -45,7 +46,6 @@
             position: relative;
         }
 
-        /* Left Content Column */
         .hero-content {
             padding-right: 2rem;
             z-index: 10;
@@ -128,7 +128,6 @@
             color: var(--neon-blue);
         }
 
-        /* Right Column: Isometric / Multi-layered Tech Mockup Workspace */
         .hero-visual {
             display: flex;
             justify-content: center;
@@ -137,7 +136,6 @@
             height: 80%;
         }
 
-        /* Abstract CSS Data Workspace Window Mockup */
         .mockup-window {
             background: var(--card-bg);
             border: 1px solid var(--border);
@@ -164,7 +162,6 @@
         .dot:first-child { width: 12px; background: var(--neon-pink); }
         .dot:nth-child(2) { width: 12px; background: var(--neon-blue); }
 
-        /* Floating Colorful Data Visual Element behind mockup */
         .floating-glow-disk {
             position: absolute;
             width: 180px;
@@ -184,7 +181,6 @@
             50% { transform: translateY(-15px) rotate(180deg); }
         }
 
-        /* Technical Interactive Bar Chart simulation inside window */
         .chart-simulation {
             display: flex;
             align-items: flex-end;
@@ -230,7 +226,6 @@
             padding-right: 5px;
         }
 
-        /* Scroll indicator on the bottom right edge */
         .scroll-indicator {
             position: absolute;
             bottom: 3rem;
@@ -244,13 +239,105 @@
             color: var(--text-muted);
         }
 
-        /* Main Project Container content underneath */
+        /* Container layouts */
         .main-content {
             max-width: 1100px;
             margin: 0 auto;
             padding: 6rem 2rem;
         }
 
+        /* SLIDER COMPONENT STYLES */
+        .slider-section {
+            margin-top: 6rem;
+            margin-bottom: 6rem;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .slider-btn-container {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .slider-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: #fff;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .slider-btn:hover {
+            border-color: var(--neon-blue);
+            color: var(--neon-blue);
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+        }
+
+        .slider-container {
+            display: flex;
+            gap: 2rem;
+            overflow-x: scroll;
+            scroll-behavior: smooth;
+            padding-bottom: 2rem;
+            scrollbar-width: none; /* Hide scrollbar for clean visual on Firefox */
+        }
+
+        .slider-container::-webkit-scrollbar {
+            display: none; /* Hide scrollbar for clean visual on Chrome/Safari */
+        }
+
+        .slide {
+            min-width: 450px;
+            width: 450px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-top: 4px solid var(--neon-pink);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .slide:nth-child(even) {
+            border-top-color: var(--neon-blue);
+        }
+
+        .slide-num {
+            font-family: 'SF Mono', monospace;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .slide-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .slide-text {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* Standard Projects Display Styles */
         .grid-layout {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -306,7 +393,6 @@
             color: #ffffff;
         }
 
-        /* Responsive Breakpoints */
         @media (max-width: 1024px) {
             .hero-section {
                 grid-template-columns: 1fr;
@@ -317,24 +403,22 @@
             .right-timeline { display: none; }
             .grid-layout { grid-template-columns: 1fr; }
             h1 { font-size: 2.8rem; }
+            .slide { min-width: 85vw; width: 85vw; }
         }
     </style>
 </head>
 <body>
 
-    <!-- HERO SPLIT DISPLAY -->
     <section class="hero-section">
         <div class="logo"><span>&gt;</span> MS_ANALYTICS</div>
-        
         <a href="mailto:m1994snow@outlook.com" class="contact-btn">Contact</a>
 
         <div class="hero-content">
             <h1>Data Analyst & Operations Specialist</h1>
-            <p class="hero-description">Transforming dark operational and logistics data inside fast-paced industrial environments into structured, high-visibility business dashboards.</p>
+            <p class="hero-description">Transforming operational and logistics data inside fast-paced industrial environments into structured, high-visibility business dashboards.</p>
             <a href="#projects" class="tech-link">Explore Case Studies <span>&rarr;</span></a>
         </div>
 
-        <!-- Dynamic Isometric Code / Visualization Display -->
         <div class="hero-visual">
             <div class="floating-glow-disk"></div>
             <div class="mockup-window">
@@ -356,7 +440,6 @@
             </div>
         </div>
 
-        <!-- Right Vertical Indicator Stack -->
         <div class="right-timeline">
             <div class="nav-num active">00</div>
             <div class="nav-num">01</div>
@@ -367,13 +450,96 @@
         <div class="scroll-indicator">&lt; scroll down</div>
     </section>
 
-    <!-- CONTENT MODULES -->
     <div class="main-content" id="projects">
+        
+        <div class="slider-section">
+            <div class="slider-controls">
+                <div>
+                    <h2 style="font-size: 2rem; font-weight: 800; letter-spacing: -0.04em;">// Diagnostic Profile</h2>
+                    <p style="color: var(--text-muted); font-size: 1rem;">Swipe or use arrows to slide through my analytical journey.</p>
+                </div>
+                <div class="slider-btn-container">
+                    <button class="slider-btn" onclick="scrollSlider(-480)">&larr;</button>
+                    <button class="slider-btn" onclick="scrollSlider(480)">&rarr;</button>
+                </div>
+            </div>
+
+            <div class="slider-container" id="journeySlider">
+                
+                <div class="slide">
+                    <div>
+                        <div class="slide-num">01 // THE ORIGIN</div>
+                        <div class="slide-title">The Operational Baseline</div>
+                        <p class="slide-text">
+                            My data journey didn't start in a sterile office—it started on a high-volume manufacturing floor[cite: 4]. Managing real-time supply chains at <strong style="color: #fff;">Niagara Bottling</strong> trained me to process physical anomalies instantly. I learned that behind every row of a data log is a real physical object that needs to move.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <div>
+                        <div class="slide-num">02 // TECHNICAL STACK</div>
+                        <div class="slide-title">Computer Science Foundations</div>
+                        <p class="slide-text">
+                            To bridge the gap between physical operations and systematic logic, I pursued a <strong style="color: #fff;">B.S. in Computer Science</strong> from the University of Phoenix. This trained me to look at warehouse structures not just as rooms of inventory, but as deep relational data models waiting to be queried.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <div>
+                        <div class="slide-num">03 // INTUITION</div>
+                        <div class="slide-title">My Analytical Philosophy</div>
+                        <p class="slide-text">
+                            Data cleaning isn't just an administrative chore; it's where the truth hides. I specialize in diving into unstructured or messy operational tracking metrics, running comprehensive structural reconciliations via SQL, and mapping them into dashboard visualizers.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <div>
+                        <div class="slide-num">04 // NEXT GEN FLOWS</div>
+                        <div class="slide-title">AI Automation Hybrid</div>
+                        <p class="slide-text">
+                            As a <strong style="color: var(--neon-blue);">Google AI Certified Professional</strong>, I integrate language models directly into data engineering tasks. I construct specialized prompts and local automation templates to streamline logic loops, reducing workflow analysis time.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
         <h2 style="font-size: 2rem; font-weight: 800; letter-spacing: -0.04em; margin-bottom: 1rem;">Selected Projects</h2>
         <p style="color: var(--text-muted); margin-bottom: 3rem; font-size: 1.1rem;">Practical optimization use cases mapping data infrastructure to supply chain impact.</p>
 
-        
-        <!-- ACADEMIC CREDENTIALS -->
+        <div class="grid-layout">
+            <div class="project-card">
+                <div class="project-title">Inventory Reconciliation Pipeline</div>
+                <div class="badge-grid">
+                    <span class="tech-badge">Oracle</span>
+                    <span class="tech-badge">WMS</span>
+                    <span class="tech-badge">Excel Data Models</span>
+                </div>
+                <div class="star-item"><strong>Situation:</strong> Inventory variations across supply channels risked causing warehouse fulfillment delays.</div>
+                <div class="star-item"><strong>Task:</strong> Isolate transactional tracking processing errors to maintain system record balance.</div>
+                <div class="star-item"><strong>Action:</strong> Engineered multi-tier log mapping across legacy warehouse control tables.</div>
+                <div class="star-item"><strong>Result:</strong> Stabilized operational accuracy reporting parameters across manufacturing pathways.</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">AI Performance Automations</div>
+                <div class="badge-grid">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">Prompt Engineering</span>
+                    <span class="tech-badge">Workflow Optimization</span>
+                </div>
+                <div class="star-item"><strong>Situation:</strong> Managing distributed log tables created analytics reporting latency.</div>
+                <div class="star-item"><strong>Task:</strong> Build automated scripts to ingest and structure analytical reporting streams.</div>
+                <div class="star-item"><strong>Action:</strong> Implemented generative prompt parsing to rapidly execute validation functions.</div>
+                <div class="star-item"><strong>Result:</strong> Reduced core dashboard pipeline update cycles through automated optimization steps.</div>
+            </div>
+        </div>
+
         <h2 style="font-size: 2rem; font-weight: 800; letter-spacing: -0.04em; margin-top: 6rem; margin-bottom: 2rem;">Qualifications</h2>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
             <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 2rem; border-radius: var(--radius);">
@@ -383,11 +549,21 @@
             </div>
             <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 2rem; border-radius: var(--radius);">
                 <div style="color: var(--neon-blue); font-family: 'SF Mono', monospace; font-size: 0.8rem; margin-bottom: 0.5rem; font-weight: 700;">PROFESSIONAL CERTIFICATE</div>
-                <div style="font-size: 1.2rem; font-weight: 700;">Google AI Credentials</div>
+                <div style="font-size: 1.2rem; font-weight: 700;">Google AI Credentials [cite: 6, 31]</div>
                 <div style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.25rem;">Issued June 2026 // Applied Workplace Automation Certificate</div>
             </div>
         </div>
     </div>
+
+    <script>
+        function scrollSlider(amount) {
+            const slider = document.getElementById('journeySlider');
+            slider.scrollBy({
+                left: amount,
+                behavior: 'smooth'
+            });
+        }
+    </script>
 
 </body>
 </html>
