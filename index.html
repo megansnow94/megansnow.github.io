@@ -405,6 +405,75 @@
             h1 { font-size: 2.8rem; }
             .slide { min-width: 85vw; width: 85vw; }
         }
+
+        /* Featured finance tracker case study */
+        .project-card--featured {
+            border-top: 4px solid var(--neon-purple);
+            grid-column: 1 / -1;
+        }
+
+        .case-study-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.25rem;
+            color: var(--neon-blue);
+            font-weight: 800;
+            text-decoration: none;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .case-study-link:hover {
+            color: var(--neon-pink);
+            transform: translateX(4px);
+        }
+
+        .education-status {
+            margin-top: -1.5rem;
+            margin-bottom: 2.5rem;
+            color: var(--neon-blue);
+            font-family: "SF Mono", monospace;
+            font-size: 0.88rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .qualifications-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 2rem;
+        }
+
+        .qualification-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: var(--radius);
+        }
+
+        .qualification-label {
+            font-family: "SF Mono", monospace;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .qualification-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .qualification-meta {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        @media (max-width: 1024px) {
+            .qualifications-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -416,6 +485,7 @@
         <div class="hero-content">
             <h1>Data Analyst & Operations Specialist</h1>
             <p class="hero-description">Transforming operational and logistics data inside fast-paced industrial environments into structured, high-visibility business dashboards.</p>
+            <p class="education-status">Currently pursuing an M.S. in Data Analytics — Data Science at Western Governors University.</p>
             <a href="#projects" class="tech-link">Explore Case Studies <span>&rarr;</span></a>
         </div>
 
@@ -513,44 +583,41 @@
         <p style="color: var(--text-muted); margin-bottom: 3rem; font-size: 1.1rem;">Practical optimization use cases mapping data infrastructure to supply chain impact.</p>
 
         <div class="grid-layout">
-            <div class="project-card">
-                <div class="project-title">Inventory Reconciliation Pipeline</div>
+            <div class="project-card project-card--featured">
+                <div class="project-title">Automated Personal Finance Tracker Suite</div>
                 <div class="badge-grid">
-                    <span class="tech-badge">Oracle</span>
-                    <span class="tech-badge">WMS</span>
-                    <span class="tech-badge">Excel Data Models</span>
+                    <span class="tech-badge">Microsoft Excel</span>
+                    <span class="tech-badge">Google Sheets</span>
+                    <span class="tech-badge">Dashboard Engineering</span>
+                    <span class="tech-badge">Data Validation</span>
+                    <span class="tech-badge">UX Design</span>
                 </div>
-                <div class="star-item"><strong>Situation:</strong> Inventory variations across supply channels risked causing warehouse fulfillment delays.</div>
-                <div class="star-item"><strong>Task:</strong> Isolate transactional tracking processing errors to maintain system record balance.</div>
-                <div class="star-item"><strong>Action:</strong> Engineered multi-tier log mapping across legacy warehouse control tables.</div>
-                <div class="star-item"><strong>Result:</strong> Stabilized operational accuracy reporting parameters across manufacturing pathways.</div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-title">AI Performance Automations</div>
-                <div class="badge-grid">
-                    <span class="tech-badge">Python</span>
-                    <span class="tech-badge">Prompt Engineering</span>
-                    <span class="tech-badge">Workflow Optimization</span>
-                </div>
-                <div class="star-item"><strong>Situation:</strong> Managing distributed log tables created analytics reporting latency.</div>
-                <div class="star-item"><strong>Task:</strong> Build automated scripts to ingest and structure analytical reporting streams.</div>
-                <div class="star-item"><strong>Action:</strong> Implemented generative prompt parsing to rapidly execute validation functions.</div>
-                <div class="star-item"><strong>Result:</strong> Reduced core dashboard pipeline update cycles through automated optimization steps.</div>
+                <div class="star-item"><strong>Situation:</strong> Everyday users needed financial tools that were automated without feeling technically overwhelming.</div>
+                <div class="star-item"><strong>Task:</strong> Design scalable debt-payoff and savings-goal systems for long-term customer use.</div>
+                <div class="star-item"><strong>Action:</strong> Built structured activity logs, hidden helper logic, status-aware calculations, calendars, forecasts, and decision-ready dashboards.</div>
+                <div class="star-item"><strong>Result:</strong> Delivered two commercial spreadsheet applications spanning 15 worksheets, more than 100,000 formula cells, and approximately 5,000 supported input rows.</div>
+                <a class="case-study-link" href="finance-tracker-case-study.html">View Full Case Study <span>&rarr;</span></a>
             </div>
         </div>
 
         <h2 style="font-size: 2rem; font-weight: 800; letter-spacing: -0.04em; margin-top: 6rem; margin-bottom: 2rem;">Qualifications</h2>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 2rem; border-radius: var(--radius);">
-                <div style="color: var(--neon-pink); font-family: 'SF Mono', monospace; font-size: 0.8rem; margin-bottom: 0.5rem; font-weight: 700;">BS // COMPUTER SCIENCE</div>
-                <div style="font-size: 1.2rem; font-weight: 700;">University of Phoenix</div>
-                <div style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.25rem;">Graduated April 2026</div>
+        <div class="qualifications-grid">
+            <div class="qualification-card">
+                <div class="qualification-label" style="color: var(--neon-pink);">BS // COMPUTER SCIENCE</div>
+                <div class="qualification-title">University of Phoenix</div>
+                <div class="qualification-meta">Graduated April 2026</div>
             </div>
-            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 2rem; border-radius: var(--radius);">
-                <div style="color: var(--neon-blue); font-family: 'SF Mono', monospace; font-size: 0.8rem; margin-bottom: 0.5rem; font-weight: 700;">PROFESSIONAL CERTIFICATE</div>
-                <div style="font-size: 1.2rem; font-weight: 700;">Google AI Credentials [cite: 6, 31]</div>
-                <div style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.25rem;">Issued June 2026 // Applied Workplace Automation Certificate</div>
+
+            <div class="qualification-card">
+                <div class="qualification-label" style="color: var(--neon-purple);">MS // DATA ANALYTICS — DATA SCIENCE</div>
+                <div class="qualification-title">Western Governors University</div>
+                <div class="qualification-meta">Currently pursuing // In progress</div>
+            </div>
+
+            <div class="qualification-card">
+                <div class="qualification-label" style="color: var(--neon-blue);">PROFESSIONAL CERTIFICATE</div>
+                <div class="qualification-title">Google AI Professional Certificate</div>
+                <div class="qualification-meta">Issued June 2026 // Applied Workplace Automation Certificate</div>
             </div>
         </div>
     </div>
