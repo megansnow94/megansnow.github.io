@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Case study for an automated debt payoff and savings tracker suite built in Excel and Google Sheets by Megan Snow.">
+    <title>Personal Finance Tracker Suite | Megan Snow</title>
+    <style>
+        :root {
+            --bg-main: #060814;
+            --card-bg: #0f1225;
+            --text-main: #ffffff;
+            --text-muted: #8b949e;
+            --neon-blue: #00f2fe;
+            --neon-pink: #ff007a;
+            --neon-purple: #7928ca;
+            --accent-gradient: linear-gradient(135deg, #00f2fe, #7928ca, #ff007a);
+            --border: rgba(255, 255, 255, 0.08);
+            --radius: 12px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.65;
+        }
+
+        a { color: inherit; }
+
+        .site-header {
+            min-height: 72vh;
+            padding: 2rem 4rem 5rem;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .site-header::before,
+        .site-header::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: .38;
+            pointer-events: none;
+        }
+
+        .site-header::before {
+            width: 360px;
+            height: 360px;
+            background: var(--neon-purple);
+            right: -80px;
+            top: -80px;
+        }
+
+        .site-header::after {
+            width: 280px;
+            height: 280px;
+            background: var(--neon-pink);
+            left: -100px;
+            bottom: -120px;
+        }
+
+        .nav {
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            font-family: "SF Mono", Consolas, monospace;
+            font-weight: 900;
+            letter-spacing: .1em;
+        }
+
+        .logo span {
+            display: inline-block;
+            background: var(--accent-gradient);
+            color: #000;
+            padding: .2rem .5rem;
+            border-radius: 4px;
+            margin-right: .5rem;
+        }
+
+        .back-link {
+            color: var(--neon-blue);
+            text-decoration: none;
+            font-size: .85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            border: 1px solid var(--neon-blue);
+            padding: .65rem 1rem;
+            border-radius: 30px;
+            transition: .25s ease;
+        }
+
+        .back-link:hover { background: var(--neon-blue); color: #000; }
+
+        .hero {
+            width: 100%;
+            max-width: 1100px;
+            margin: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .eyebrow {
+            color: var(--neon-blue);
+            font-family: "SF Mono", Consolas, monospace;
+            font-size: .78rem;
+            font-weight: 800;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            max-width: 900px;
+            font-size: clamp(3rem, 8vw, 6.4rem);
+            line-height: .98;
+            letter-spacing: -.055em;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #fff, #e2e8f0, var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-copy {
+            color: var(--text-muted);
+            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            max-width: 790px;
+        }
+
+        .hero-badges,
+        .badge-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .55rem;
+            margin-top: 1.8rem;
+        }
+
+        .badge {
+            font-family: "SF Mono", Consolas, monospace;
+            font-size: .72rem;
+            color: var(--neon-blue);
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,.04);
+            padding: .35rem .7rem;
+            border-radius: 5px;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section { margin-bottom: 7rem; }
+
+        .section-heading {
+            display: grid;
+            grid-template-columns: minmax(220px, .75fr) 1.25fr;
+            gap: 4rem;
+            align-items: start;
+            margin-bottom: 2.5rem;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3.6rem);
+            line-height: 1.05;
+            letter-spacing: -.04em;
+        }
+
+        h3 { font-size: 1.3rem; margin-bottom: .8rem; }
+
+        p, li { color: var(--text-muted); }
+
+        .lead { font-size: 1.08rem; }
+
+        .metric-grid,
+        .feature-grid,
+        .challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.5rem;
+        }
+
+        .metric-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: 0 20px 45px rgba(0,0,0,.28);
+        }
+
+        .metric {
+            min-height: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-top: 4px solid var(--neon-blue);
+        }
+
+        .metric:nth-child(2), .metric:nth-child(4) { border-top-color: var(--neon-pink); }
+
+        .metric-value {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 900;
+            letter-spacing: -.04em;
+        }
+
+        .metric-label {
+            font-family: "SF Mono", Consolas, monospace;
+            color: var(--text-muted);
+            font-size: .74rem;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+
+        .card ul { padding-left: 1.15rem; }
+        .card li { margin-bottom: .65rem; }
+
+        .architecture {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1rem;
+            align-items: stretch;
+        }
+
+        .architecture-step {
+            position: relative;
+            min-height: 190px;
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .architecture-step:not(:last-child)::after {
+            content: "→";
+            position: absolute;
+            right: -.8rem;
+            top: 50%;
+            color: var(--neon-blue);
+            font-size: 1.5rem;
+            z-index: 2;
+        }
+
+        .step-number {
+            font-family: "SF Mono", Consolas, monospace;
+            color: var(--neon-pink);
+            font-size: .75rem;
+        }
+
+        .challenge-card { border-left: 4px solid var(--neon-purple); }
+        .challenge-card strong { color: white; }
+
+        .qa-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: .8rem 2rem;
+            list-style: none;
+        }
+
+        .qa-list li {
+            position: relative;
+            padding-left: 1.6rem;
+        }
+
+        .qa-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--neon-blue);
+            font-weight: 900;
+        }
+
+        .commercial-note {
+            padding: 2.2rem;
+            background: linear-gradient(135deg, rgba(0,242,254,.08), rgba(121,40,202,.11), rgba(255,0,122,.08));
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .button {
+            display: inline-block;
+            padding: .85rem 1.15rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 800;
+        }
+
+        .button-primary { background: var(--accent-gradient); color: #000; }
+        .button-secondary { border: 1px solid var(--neon-blue); color: var(--neon-blue); }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: .9rem;
+        }
+
+        @media (max-width: 850px) {
+            .site-header { padding: 1.5rem 1.25rem 4rem; }
+            .section-heading,
+            .metric-grid,
+            .feature-grid,
+            .challenge-grid,
+            .architecture,
+            .qa-list { grid-template-columns: 1fr; }
+            .architecture-step:not(:last-child)::after {
+                content: "↓";
+                right: 50%;
+                top: auto;
+                bottom: -1.15rem;
+            }
+            .nav { gap: 1rem; }
+            main { padding: 4rem 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav" aria-label="Case study navigation">
+            <div class="logo"><span>&gt;</span> MS_ANALYTICS</div>
+            <a href="index.html#projects" class="back-link">Back to Portfolio</a>
+        </nav>
+
+        <div class="hero">
+            <div class="eyebrow">Portfolio Case Study // Spreadsheet Engineering</div>
+            <h1>Automated Personal Finance Tracker Suite</h1>
+            <p class="hero-copy">
+                A debt-payoff and savings-goal system that transforms guided customer inputs into automated balances,
+                status-aware summaries, forecasts, calendars, progress views, and decision-ready dashboards.
+            </p>
+            <div class="hero-badges" aria-label="Project technologies">
+                <span class="badge">Microsoft Excel</span>
+                <span class="badge">Google Sheets</span>
+                <span class="badge">Dashboard Design</span>
+                <span class="badge">Financial Logic</span>
+                <span class="badge">Data Validation</span>
+                <span class="badge">UX Design</span>
+                <span class="badge">Quality Assurance</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="section">
+            <div class="section-heading">
+                <div>
+                    <div class="eyebrow">01 // Project Overview</div>
+                    <h2>Built for real users, not idealized sample data.</h2>
+                </div>
+                <div>
+                    <p class="lead">
+                        Many financial templates are either too manual to maintain or too complicated for everyday users.
+                        I designed two commercial spreadsheet applications that keep the customer-facing experience simple
+                        while a separate calculation layer manages the technical work.
+                    </p>
+                    <p class="lead" style="margin-top: 1rem;">
+                        The suite demonstrates end-to-end product development: requirements, workbook architecture,
+                        automation, dashboard design, documentation, compatibility testing, launch support, and revisions
+                        based on customer questions.
+                    </p>
+                </div>
+            </div>
+
+            <div class="metric-grid">
+                <article class="card metric">
+                    <div class="metric-value">2</div>
+                    <div class="metric-label">Complete financial applications</div>
+                </article>
+                <article class="card metric">
+                    <div class="metric-value">15</div>
+                    <div class="metric-label">Worksheets across the suite</div>
+                </article>
+                <article class="card metric">
+                    <div class="metric-value">100K+</div>
+                    <div class="metric-label">Formula cells across both workbooks</div>
+                </article>
+                <article class="card metric">
+                    <div class="metric-value">5,000</div>
+                    <div class="metric-label">Approximate supported input rows</div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-heading">
+                <div>
+                    <div class="eyebrow">02 // Products</div>
+                    <h2>Two tools sharing one scalable design system.</h2>
+                </div>
+                <p class="lead">
+                    Each workbook solves a different financial problem while using the same core principles:
+                    structured logs, validated inputs, protected logic, status-aware reporting, and dashboard-first outputs.
+                </p>
+            </div>
+
+            <div class="feature-grid">
+                <article class="card">
+                    <h3>Debt Payoff Tracker</h3>
+                    <ul>
+                        <li>Central debt log and dedicated payment history</li>
+                        <li>Automated balances and overall payoff progress</li>
+                        <li>Snowball, Avalanche, Custom Order, and Stress Debt strategies</li>
+                        <li>Monthly payment calendar and payoff-pace views</li>
+                        <li>Featured-debt dashboard and status-aware calculations</li>
+                        <li>Emotional check-ins designed around financial stress</li>
+                    </ul>
+                </article>
+
+                <article class="card">
+                    <h3>Savings Goal Tracker</h3>
+                    <ul>
+                        <li>Multiple simultaneous savings goals</li>
+                        <li>Contribution, withdrawal, transfer, and bonus activity logs</li>
+                        <li>Automated saved, remaining, and percentage calculations</li>
+                        <li>Monthly and lifetime dashboard summaries</li>
+                        <li>Featured-goal snapshots and savings forecasts</li>
+                        <li>Active, paused, completed, and archived status rules</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="eyebrow">03 // System Architecture</div>
+            <h2 style="max-width: 760px; margin-bottom: 2.5rem;">Separate the interface from the calculations.</h2>
+
+            <div class="architecture">
+                <article class="architecture-step">
+                    <span class="step-number">01</span>
+                    <div>
+                        <h3>Guided Inputs</h3>
+                        <p>Editable tables, dates, balances, dropdowns, targets, statuses, and payment activity.</p>
+                    </div>
+                </article>
+                <article class="architecture-step">
+                    <span class="step-number">02</span>
+                    <div>
+                        <h3>Validated Logs</h3>
+                        <p>Dedicated transaction histories preserve a reliable source of truth and support monthly reporting.</p>
+                    </div>
+                </article>
+                <article class="architecture-step">
+                    <span class="step-number">03</span>
+                    <div>
+                        <h3>Helper Logic</h3>
+                        <p>Hidden support sheets manage matching, status rules, forecasts, calendar staging, and summaries.</p>
+                    </div>
+                </article>
+                <article class="architecture-step">
+                    <span class="step-number">04</span>
+                    <div>
+                        <h3>Decision Views</h3>
+                        <p>KPIs, progress charts, calendars, featured records, and forecasts convert logs into useful actions.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-heading">
+                <div>
+                    <div class="eyebrow">04 // Engineering Decisions</div>
+                    <h2>Complexity stays behind the interface.</h2>
+                </div>
+                <p class="lead">
+                    The product needed to remain approachable without sacrificing data integrity, history, or long-term use.
+                    These decisions helped balance those requirements.
+                </p>
+            </div>
+
+            <div class="challenge-grid">
+                <article class="card challenge-card">
+                    <h3>One source of truth</h3>
+                    <p><strong>Challenge:</strong> Manual balance updates cause duplicate entry and inconsistent totals.</p>
+                    <p style="margin-top: .8rem;"><strong>Solution:</strong> Dedicated payment and transaction logs drive balances and monthly summaries.</p>
+                </article>
+                <article class="card challenge-card">
+                    <h3>Status-aware reporting</h3>
+                    <p><strong>Challenge:</strong> Paused or archived records should remain in history without affecting every metric.</p>
+                    <p style="margin-top: .8rem;"><strong>Solution:</strong> Calculations include or exclude records according to their operational status.</p>
+                </article>
+                <article class="card challenge-card">
+                    <h3>Calendar edge cases</h3>
+                    <p><strong>Challenge:</strong> More than one debt payment may be due on the same date.</p>
+                    <p style="margin-top: .8rem;"><strong>Solution:</strong> Calendar staging logic supports multiple qualifying entries while excluding paused records.</p>
+                </article>
+                <article class="card challenge-card">
+                    <h3>Long-term scalability</h3>
+                    <p><strong>Challenge:</strong> Customers should not rebuild formulas or validations as the workbook grows.</p>
+                    <p style="margin-top: .8rem;"><strong>Solution:</strong> Input, formula, formatting, and validation ranges extend to approximately 5,000 rows.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-heading">
+                <div>
+                    <div class="eyebrow">05 // Quality Assurance</div>
+                    <h2>Testing beyond the happy path.</h2>
+                </div>
+                <p class="lead">
+                    The QA process focused on the conditions most likely to cause customer confusion, incorrect totals,
+                    broken dashboards, or file-opening errors.
+                </p>
+            </div>
+
+            <div class="card">
+                <ul class="qa-list">
+                    <li>Blank and partially completed records</li>
+                    <li>Multiple entries on the same date</li>
+                    <li>Active, paused, completed, and archived statuses</li>
+                    <li>Month and year selector changes</li>
+                    <li>Dashboard and chart refresh behavior</li>
+                    <li>Formula and worksheet reference integrity</li>
+                    <li>Extended input and validation ranges</li>
+                    <li>Excel file-opening and repair-warning checks</li>
+                    <li>Google Sheets compatibility and help documentation</li>
+                    <li>Customer-facing instructions and empty states</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section commercial-note">
+            <div class="eyebrow">06 // Business Context</div>
+            <h2 style="max-width: 820px;">A commercial product with protected implementation details.</h2>
+            <p class="lead" style="max-width: 850px; margin-top: 1rem;">
+                These workbooks were developed for Plans With Personality, a digital-product business focused on
+                functional spreadsheets with approachable design and distinct brand voices. The complete products and
+                formula systems are not published in this portfolio because they are proprietary commercial work.
+            </p>
+            <div class="actions">
+                <a class="button button-primary" href="https://planswithpersonality.etsy.com" target="_blank" rel="noopener">View Commercial Brand</a>
+                <a class="button button-secondary" href="https://github.com/megansnow94/megansnow.github.io" target="_blank" rel="noopener">View Portfolio Repository</a>
+                <a class="button button-secondary" href="index.html#projects">Return to Projects</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        Megan Snow · Data Analyst & Operations Specialist · 2026
+    </footer>
+</body>
+</html>
